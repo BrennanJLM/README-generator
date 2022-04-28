@@ -96,8 +96,9 @@ const promptUser = () => {
               });
             });
         };
-        writeFile(answer.title)
-        console.log(answer.title)
+        writeFile(answer.title, answer.description, answer.installation-instructions, answer.usage, answer.license )
+       
+        console.log(answer.title, answer.description, answer.installation-instructions, answer.usage, answer.license )
     })
 }
 
