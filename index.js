@@ -100,11 +100,7 @@ const promptUser = () => {
                 }
             }
         },
-
-
-
-        
-    ])
+       ])
 
     .then ((answer) => {
         const writeFile = fileContent => {
@@ -135,9 +131,9 @@ const promptUser = () => {
             imagelink = "[![License](https://img.shields.io/badge/License-BSD_3--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)"  
         }
 
-        output = "## " + answer.title + "\n" + "## Description \n" + answer.description + 
-        "\n" + "## Installation \n" + answer.installationInstructions + "\n" + "## How The Project Works \n"+ answer.usage + "\n" + "## License \n"+ answer.license + imagelink +
-        "\n" + answer.confirmContributor + "\n" + "## Questions? \n" + answer.email + "\n" + answer.github
+        output = "## " + answer.title + "\n" + "\n" + "## Description \n" + answer.description + 
+        "\n" + "\n" + "## Installation \n" + answer.installationInstructions + "\n" + "\n" + "## How The Project Works \n"+ answer.usage + "\n" + "\n" + "## License \n"+ answer.license + imagelink +
+        "\n" + answer.confirmContributor + "\n" + "\n" + "## Questions? \n" + answer.email + "\n" + answer.github
         
         
         writeFile(output)
