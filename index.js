@@ -32,7 +32,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'installation-instructions',
+            name: 'installationInstructions',
             message: 'Describe how to install your project:',
             validate: descriptionInput => {
                 if (descriptionInput) {
@@ -58,9 +58,9 @@ const promptUser = () => {
         },
         {
             type: 'checkbox',
-            name: 'License',
+            name: 'license',
             message: 'What license was used to create your project?',
-            choices: ['MIT License', 'Apache License', 'GNU General Public License', 'Boost Software License', 'Other']
+            choices: ['Apache License', 'Boost License', 'BSD License', 'Other']
         },
         {
             type: 'confirm',
@@ -74,6 +74,32 @@ const promptUser = () => {
             message: 'Please provide name/names of contributors:',
             when: ({confirmContributor}) =>  confirmContributor       
         },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email?',
+            validate: descriptionInput => {
+                if (descriptionInput) {
+                    return true;
+                } else {
+                    console.log('Please enter an Email!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is your Github url??',
+            validate: descriptionInput => {
+                if (descriptionInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a title!');
+                    return false;
+                }
+            }
+        },
 
 
 
@@ -83,7 +109,7 @@ const promptUser = () => {
     .then ((answer) => {
         const writeFile = fileContent => {
             return new Promise((resolve, reject) => {
-              fs.writeFile('./README.md', fileContent, err => {
+              fs.writeFile('./dist/README.md', fileContent, err => {
                 if (err) {
                   reject(err);
                   return;
@@ -96,9 +122,27 @@ const promptUser = () => {
               });
             });
         };
-        writeFile(answer.title, answer.description, answer.installation-instructions, answer.usage, answer.license )
+
+        imagelink = ""
+
+        if (answer.license == "Apache License") {
+            imagelink = "[![License](https://img.shields.io/badge/License-Apache_2.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)"
+        }
+        else if (answer.license == "Boost License") {
+            imagelink = "[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)" 
+        }
+        else if (answer.license == "BDN license") {
+            imagelink = "[![License](https://img.shields.io/badge/License-BSD_3--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)"  
+        }
+
+        output = "## " + answer.title + "\n" + "## Description \n" + answer.description + 
+        "\n" + "## Installation \n" + answer.installationInstructions + "\n" + "## How The Project Works \n"+ answer.usage + "\n" + "## License \n"+ answer.license + imagelink +
+        "\n" + answer.confirmContributor + "\n" + "## Questions? \n" + answer.email + "\n" + answer.github
+        
+        
+        writeFile(output)
        
-        console.log(answer.title, answer.description, answer.installation-instructions, answer.usage, answer.license )
+        console.log(output)
     })
 }
 
