@@ -15,13 +15,17 @@ To run the README generator run node index.js (in the terminal) in the root fold
 
 ![2022-05-10 (5)](https://user-images.githubusercontent.com/98754293/167703364-e7106c16-106c-47fe-93a0-3678883872aa.png)
 
+## Video
+
+https://user-images.githubusercontent.com/98754293/167704539-fa112620-7ab4-4176-a9be-a8d68d3263ed.mp4
+
 ## Collaborators and References
 
 - Git-it-done Project Code
     University Of Toronto SCS Coding Boot Camp
 - W3 Schools
     www.w3schools.com
-- Juan Santiago
+- Maria Aquino
     Tutor
 
 ## License
